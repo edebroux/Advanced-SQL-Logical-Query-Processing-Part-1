@@ -54,8 +54,6 @@ GO
 
 -- Variable declaration
 DECLARE @Min_Population		INT  = 10000;				-- Min population for a city to be included
-DECLARE @Min_Date_Calendar	DATE = '19900101';			-- Calendar start date
-DECLARE @Max_Date_Calendar	DATE = '20500101';			-- Calendar end date
 
 -- Common person names in the US
 -- Source https://names.mongabay.com/ (was all caps in source)
@@ -336,7 +334,7 @@ FROM
 				('PARSON RUSSELL TERRIER', 'http://www.fci.be/en/nomenclature/PARSON-RUSSELL-TERRIER-339.html'), ('SAINT MIGUEL CATTLE', 'http://www.fci.be/en/nomenclature/SAINT-MIGUEL-CATTLE-DOG-340.html'),
 				('BRAZILIAN TERRIER', 'http://www.fci.be/en/nomenclature/BRAZILIAN-TERRIER-341.html'), ('AUSTRALIAN SHEPHERD', 'http://www.fci.be/en/nomenclature/AUSTRALIAN-SHEPHERD-342.html'),
 				('ITALIAN CANE CORSO', 'http://www.fci.be/en/nomenclature/ITALIAN-CANE-CORSO-343.html'), ('AMERICAN AKITA', 'http://www.fci.be/en/nomenclature/AMERICAN-AKITA-344.html'),
-				('JACK RUSSELL TERRIER', 'http://www.fci.be/en/nomenclature/JACK-RUSSELL-TERRIER-345.html'), ('DOGO CANARIO', 'http://www.fci.be/en/nomenclature/DOGO-CANARIO-346.html')--,
+				('JACK RUSSELL TERRIER', 'http://www.fci.be/en/nomenclature/JACK-RUSSELL-TERRIER-345.html'), ('DOGO CANARIO', 'http://www.fci.be/en/nomenclature/DOGO-CANARIO-346.html'),
 				('WHITE SWISS SHEPHERD', 'http://www.fci.be/en/nomenclature/WHITE-SWISS-SHEPHERD-DOG-347.html'), ('TAIWAN', 'http://www.fci.be/en/nomenclature/TAIWAN-DOG-348.html'),
 				('ROMANIAN MIORITIC SHEPHERD', 'http://www.fci.be/en/nomenclature/ROMANIAN-MIORITIC-SHEPHERD-DOG-349.html'), ('ROMANIAN CARPATHIAN SHEPHERD', 'http://www.fci.be/en/nomenclature/ROMANIAN-CARPATHIAN-SHEPHERD-DOG-350.html'),
 				('AUSTRALIAN STUMPY TAIL CATTLE', 'http://www.fci.be/en/nomenclature/AUSTRALIAN-STUMPY-TAIL-CATTLE-DOG-351.html'), ('RUSSIAN TOY', 'http://www.fci.be/en/nomenclature/RUSSIAN-TOY-352.html'),
@@ -353,15 +351,15 @@ SELECT	'Cat',
 FROM
 		(
 			VALUES	('American Bobtail'),('Bengal'), ('Maine Coon'),
-					('Persian'),('Ragdoll'),('Russian Blue'), ('Scottish Fold'), ('Siamese'), ('Sphynx'),('Turkish Angora')	
-				('Abyssinian'), ('American Bobtail'), ('American Bobtail Shorthair'), ('American Curl'),('American Shorthair'), ('American Wirehair'), ('Australian Mist'), ('Balinese'),
-				('Bengal'), ('Bengal Longhair'), ('Birman'), ('Bombay'), ('British Longhair'), ('British Shorthair'), ('Burmese'), ('Burmilla'),
+					('Persian'),('Ragdoll'),('Russian Blue'), ('Scottish Fold'), ('Siamese'), ('Sphynx'),('Turkish Angora'),	
+				('Abyssinian'), ('American Bobtail Shorthair'), ('American Curl'),('American Shorthair'), ('American Wirehair'), ('Australian Mist'), ('Balinese'),
+				('Bengal Longhair'), ('Birman'), ('Bombay'), ('British Longhair'), ('British Shorthair'), ('Burmese'), ('Burmilla'),
 				('Burmilla Longhair'), ('Chartreux'), ('Chausie'), ('Cornish Rex'), ('Cymric'), ('Devon Rex'), ('Donskoy'), ('Egyptian Mau'), ('Exotic Shorthair'), ('Havana'), ('Himalayan'), ('Japanese Bobtail'),
-				('Japanese Bobtail Longhair'), ('Khaomanee'), ('Korat'), ('Kurilian Bobtail'), ('Kurilian Bobtail Longhair'), ('LaPerm'), ('LaPerm Shorthair'), ('Lykoi'), ('Maine Coon'), ('Maine Coon Polydactyl'), ('Manx'), ('Minuet'),
+				('Japanese Bobtail Longhair'), ('Khaomanee'), ('Korat'), ('Kurilian Bobtail'), ('Kurilian Bobtail Longhair'), ('LaPerm'), ('LaPerm Shorthair'), ('Lykoi'),('Maine Coon Polydactyl'), ('Manx'), ('Minuet'),
 				('Minuet Longhair'), ('Munchkin'), ('Munchkin Longhair'), ('Nebelung'), ('Norwegian Forest'), ('Ocicat'), ('Oriental Longhair'), ('Oriental Shorthair'),
-				('Persian'), ('Peterbald'), ('Pixiebob'), ('Pixiebob Longhair'), ('Ragdoll'), ('Russian Blue'), ('Savannah'), ('Scottish Fold'),
-				('Scottish Fold Longhair'), ('Scottish Straight'), ('Scottish Straight Longhair'), ('Selkirk Rex'), ('Selkirk Rex Longhair'), ('Siamese'), ('Siberian'), ('Singapura'), ('Snowshoe'), ('Somali'), ('Sphynx'), ('Thai'),
-				('Tonkinese'), ('Toyger'), ('Turkish Angora'), ('Turkish Van')
+				('Peterbald'), ('Pixiebob'), ('Pixiebob Longhair'), ('Savannah'),
+				('Scottish Fold Longhair'), ('Scottish Straight'), ('Scottish Straight Longhair'), ('Selkirk Rex'), ('Selkirk Rex Longhair'), ('Siberian'), ('Singapura'), ('Snowshoe'), ('Somali'), ('Thai'),
+				('Tonkinese'), ('Toyger'), ('Turkish Van')
 		) AS Breeds (Breed)
 UNION ALL
 SELECT	'Rabbit',
@@ -369,15 +367,15 @@ SELECT	'Rabbit',
 		'https://rabbitpedia.com/' + REPLACE(Breeds.Breed, ' ', '-')
 FROM
 		(
-			VALUES	('Lionhead'),('English Lop'), ('French Lop'),('American'),('Belgian Hare'),('Californian'),('Chinchilla (Giant)'), ('English Angora'),
-					('Satin Angora'),('Himalayan'), ('Jersey Wooly'), ('Velveteen Lop')
+			VALUES	('Lionhead'), ('French Lop'),('Chinchilla (Giant)'),
+					('Satin Angora'),('Himalayan'),
 					
-				('Lionhead'), ('Flemish Giant'), ('Continental Giant'), ('Dutch'), ('English Lop'), ('French Lop'), ('Holland Lop'), ('Mini Rex'),
+				('Flemish Giant'), ('Continental Giant'), ('Dutch'), ('English Lop'), ('Holland Lop'), ('Mini Rex'),
 				('Netherland dwarf'), ('Polish'), ('American'), ('American Fuzzy Lop'), ('American Sable'), ('Argente Brun'), ('Argente Crème'), ('Argente de Champagne'),
 				('Belgian Hare'), ('Beveren'), ('Blanc de Hotot'), ('Britannia Petite'), ('Californian'), ('Checkered Giant'), ('Chinchilla (Standard)'), ('Chinchilla (American)'),
-				('Chinchilla (Giant)'), ('Cinnamon'), ('Dwarf Hotot'), ('Dwarf Lop (Mini Lop in USA)'), ('English Angora'), ('English Spot'), ('Florida White'), ('French Angora'),
-				('Giant Angora'), ('Giant Papillon'), ('Harlequin'), ('Havana'), ('Himalayan'), ('Jersey Wooly'), ('Lilac'), ('New Zealand'),
-				('Palomino'), ('Rex (Standard)'), ('Rhinelander'), ('Satin'), ('Satin Angora'), ('Silver'), ('Silver Fox'), ('Silver Marten'), ('Tan'), ('Thrianta'), ('Velveteen Lop')
+				('Cinnamon'), ('Dwarf Hotot'), ('Dwarf Lop (Mini Lop in USA)'), ('English Angora'), ('English Spot'), ('Florida White'), ('French Angora'),
+				('Giant Angora'), ('Giant Papillon'), ('Harlequin'), ('Havana'), ('Jersey Wooly'), ('Lilac'), ('New Zealand'),
+				('Palomino'), ('Rex (Standard)'), ('Rhinelander'), ('Satin'), ('Silver'), ('Silver Fox'), ('Silver Marten'), ('Tan'), ('Thrianta'), ('Velveteen Lop')
 		) AS Breeds (Breed);
 
 -- Popular animal names
@@ -541,7 +539,7 @@ CREATE TABLE Reference.Cities
 (
 	State		VARCHAR(20) NOT NULL
 		REFERENCES Reference.States (State),
-	City		VARCHAR(30) NOT NULL,
+	City		VARCHAR(50) NOT NULL,
 	County		VARCHAR(30) NOT NULL,
 	Population	INT			NOT NULL,
 	PRIMARY KEY (State, City),
@@ -556,13 +554,13 @@ SELECT	state_name,
 		county_name,
 		population
 FROM	US_Cities.dbo.us_cities
-WHERE	Population >= @Min_Population; -- Limit sample DB only to main cities
+WHERE	Population >= 10000; -- Limit sample DB only to main cities
 
 -- City Zip Codes
 CREATE TABLE Reference.City_Zip_Codes
 (
 	State		VARCHAR(20) NOT NULL,
-	City		VARCHAR(30) NOT NULL,
+	City		VARCHAR(50) NOT NULL,
 	CONSTRAINT FK_City_Zip_Codes__Cities
 		FOREIGN KEY (State, City)
 		REFERENCES Reference.Cities (State, City),
@@ -670,6 +668,11 @@ CREATE TABLE Reference.Calendar
 	Year_Week			TINYINT		NOT NULL,
 	US_Federal_Holiday	VARCHAR(50) NULL,
 );
+
+-- Moved min and max date declarations to here because I am executing the code in chunks
+-- Code has errors
+DECLARE @Min_Date_Calendar	DATE = '19900101';			-- Calendar start date
+DECLARE @Max_Date_Calendar	DATE = '20500101';			-- Calendar end date
 
 -- Populate Calendar with dates between @Min_Date_Calendar and @Max_Date_Calendar
 INSERT	Reference.Calendar (Date, Year, Month, Month_Name, Day, Day_Name, Day_of_Year, Weekday, Year_Week)
